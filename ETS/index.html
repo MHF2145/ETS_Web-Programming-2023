@@ -43,7 +43,7 @@
         <div class="row column-gap-lg-0 row-cols-3 row-cols-lg-3 g-2 g-lg-3 col-10">
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-5 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
+                <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-5">
@@ -78,7 +78,7 @@
             </div>
 
             <div class="col-xl-3 col-md-5 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
+                <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-5">
@@ -96,7 +96,7 @@
             </div>
 
             <div class="col-xl-3 col-md-5 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
+                <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-5">
@@ -231,7 +231,9 @@
                 'http://apilayer.net/api/live?access_key=e5c08dd6338660ce87600ab9bfe6cdca&pairs=EURUSD,EURGBP,GBPUSD,USDJPY,AUDUSD,USDCHF,NZDUSD,USDCAD,USDZAR')
             .then(function (response) {
                 if (response.ok) {
-                    return response.json(); // Parse the response as JSON
+                    return response.json().then(function(currency){
+                        displaycurencry(currency)
+                    }); // Parse the response as JSON
                 }
                 throw new Error('Network response was not ok');
             })
@@ -243,8 +245,23 @@
                 // Handle any errors here
                 console.log(error);
             });
-            
-        
+
+            function displaycurencry(currency) {
+            const currency = (currency.name);
+            document.querySelector(".pokemon-name").textContent = capitalizedPokemonName;
+            document.querySelector(".pokemon-image").src = pokemon.sprites.front_default;
+
+            const movesContainer = document.getElementById("moves");
+            movesContainer.innerHTML = "<h3>Moves</h3>";
+            for (let i = 0; i < 4; i++) {
+                movesContainer.innerHTML += `<p>${capitalizeWords(pokemon.moves[i].move.name)}</p>`;
+            }
+            // gatau ini apaan dah
+
+            document.getElementById("height").textContent = `Height: ${pokemon.height}`;
+            document.getElementById("weight").textContent = `Weight: ${pokemon.weight}`;
+        }
+
     </script>
 </body>
 
