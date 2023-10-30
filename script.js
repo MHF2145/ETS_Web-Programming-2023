@@ -1,4 +1,5 @@
-const endpoint = `http://apilayer.net/api/live?access_key=${e5c08dd6338660ce87600ab9bfe6cdca}&pairs=EURUSD,EURGBP,GBPUSD,USDJPY,AUDUSD,USDCHF,NZDUSD,USDCAD,USDZAR`;
+const apikey = "e5c08dd6338660ce87600ab9bfe6cdca"
+const endpoint = `http://apilayer.net/api/live?access_key=${apikey}&pairs=EURUSD,EURGBP,GBPUSD,USDJPY,AUDUSD,USDCHF,NZDUSD,USDCAD,USDZAR`;
 
 const ifUndefined = {
     "EURUSD": {
